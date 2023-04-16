@@ -4,8 +4,8 @@ import { AuthContext } from "./Provider/AuthProviders";
 
 const Regester = () => {
 
-const  user = useContext(AuthContext)
-console.log(user)
+const  {user,createUser } = useContext(AuthContext)
+console.log(createUser )
 
   const haldleRegesterSubmit = (event) => {
     event.preventDefault();
@@ -13,7 +13,14 @@ console.log(user)
  const name = event.target.name.value
 const email = event.target.email.value;
 console.log(email,password,name)
-  
+createUser(email, password)
+.then(result =>{
+  const loggUser = result.user;
+  console.log((loggUser))
+})
+  .catch(error =>{
+    console.log(error)
+  })
   };
   return (
     <div>
